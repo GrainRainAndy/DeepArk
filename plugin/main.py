@@ -36,7 +36,7 @@ class DeeparkCompanion(Star):
         self.batch_bridge.install()
         self.spawn(self.scheduler())
         self.spawn(self.refresh_news())
-        logger.info('deepark companion initialized (memory=%s; explicit group allowlist)', self.config.get('memory_backend','local'))
+        logger.info('deepark companion initialized (memory=%s; groups follow AstrBot whitelist)', self.config.get('memory_backend','local'))
 
     def spawn(self, coro):
         task = asyncio.create_task(coro)
@@ -71,16 +71,15 @@ class DeeparkCompanion(Star):
     async def allowed(self, scope, group):
         if not self.config.get('enabled', True):
             return False
-        allow = {str(x).strip() for x in self.config.get('allow_groups', []) if str(x).strip()}
-        if not allow or not ({scope, str(group)} & allow):
-            return False
         cfg = self.context.get_config(scope)
         plugin_set = cfg.get('plugin_set', ['*'])
         if '*' not in plugin_set and 'deepark_companion' not in plugin_set:
             return False
         access = cfg.get('platform_settings', {})
         whitelist = {str(x).strip() for x in access.get('id_whitelist', [])}
-        if access.get('enable_id_white_list') and whitelist and not ({scope,str(group)} & whitelist):
+        # Always require explicit group membership, even when AstrBot's global
+        # whitelist gate is off. Read on every check so removals revoke access.
+        if not str(group) or ':GroupMessage:' not in scope or not ({scope,str(group)} & whitelist):
             return False
         session = await sp.get_async(scope='umo', scope_id=scope, key='session_service_config', default={}) or {}
         if session.get('session_enabled') is False or session.get('llm_enabled') is False:

@@ -4,11 +4,6 @@
     "description": "启用 deepark 记忆和群聊调度",
     "default": true
   },
-  "allow_groups": {
-    "type": "list",
-    "description": "允许的群号或完整 UMO；空列表不处理任何群",
-    "default": []
-  },
   "proactive_enabled": {
     "type": "bool",
     "description": "允许低频插话和自主开题",
