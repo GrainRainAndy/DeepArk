@@ -1,0 +1,147 @@
+{
+  "enabled": {
+    "type": "bool",
+    "description": "启用 deepark 记忆和群聊调度",
+    "default": true
+  },
+  "allow_groups": {
+    "type": "list",
+    "description": "允许的群号或完整 UMO；空列表不处理任何群",
+    "default": []
+  },
+  "proactive_enabled": {
+    "type": "bool",
+    "description": "允许低频插话和自主开题",
+    "default": false
+  },
+  "dry_run": {
+    "type": "bool",
+    "description": "只计算主动发言，不发送；部署验证阶段使用",
+    "default": true
+  },
+  "auto_memory": {
+    "type": "bool",
+    "description": "从直接对话中提取明确的个人偏好；本地存储",
+    "default": true
+  },
+  "idle_daily_limit": {
+    "type": "int",
+    "description": "每日冷场开题尝试上限，0关闭，范围0–6",
+    "default": 2
+  },
+  "interject_daily_limit": {
+    "type": "int",
+    "description": "每日插话尝试上限，-1不限日总数，0关闭；仍受小时回复限额与冷却约束",
+    "default": 8
+  },
+  "active_start_hour": {
+    "type": "int",
+    "description": "北京时间允许主动发言的起始小时，0–23",
+    "default": 9
+  },
+  "active_end_hour": {
+    "type": "int",
+    "description": "北京时间结束小时（不含），1–24；小于起始表示跨午夜，如9到4表示4–9免打扰",
+    "default": 23
+  },
+  "bot_quiet_seconds": {
+    "type": "int",
+    "description": "机器人发言后最短安静秒数，至少60",
+    "default": 180
+  },
+  "unsolicited_gap_seconds": {
+    "type": "int",
+    "description": "主动尝试最短间隔秒数，至少60",
+    "default": 600
+  },
+  "idle_gap_seconds": {
+    "type": "int",
+    "description": "两次冷场开题至少相隔秒数，至少3600",
+    "default": 14400
+  },
+  "followup_enabled": {
+    "type": "bool",
+    "description": "识别短时间内对机器人的接话，走正常回复，不受主动插话长冷却",
+    "default": true
+  },
+  "followup_window_seconds": {
+    "type": "int",
+    "description": "接话窗口秒数，15–300",
+    "default": 120
+  },
+  "followup_burst_limit": {
+    "type": "int",
+    "description": "一轮连续隐式接话最多次数，0关闭，最高60",
+    "default": 3
+  },
+  "decision_provider_id": {
+    "type": "string",
+    "description": "独立参与决策模型；部署默认同一DeepSeek的非思考模式",
+    "default": "deepark-decision"
+  },
+  "memory_backend": {
+    "type": "string",
+    "default": "local",
+    "description": "长期记忆管理：local或livingmemory"
+  },
+  "ecosystem_tool_guard": {
+    "type": "bool",
+    "default": false,
+    "description": "仅允许列出的记忆和管理员社交工具"
+  },
+  "memory_tools": {
+    "type": "list",
+    "default": [],
+    "description": "允许的记忆工具"
+  },
+  "admin_social_tools": {
+    "type": "list",
+    "default": [],
+    "description": "仅管理员直接请求可用的QQ空间/资料工具"
+  },
+  "batching_enabled": {
+    "type": "bool",
+    "default": false,
+    "description": "私聊短消息聚合，仅限下列会话"
+  },
+  "batching_sessions": {
+    "type": "list",
+    "default": [],
+    "description": "启用短消息聚合的完整私聊UMO"
+  },
+  "batch_quiet_seconds": {
+    "type": "float",
+    "default": 1.5,
+    "description": "收到新消息后等待的停顿秒数"
+  },
+  "batch_max_seconds": {
+    "type": "float",
+    "default": 4.0,
+    "description": "一批消息最长收集时间（不含前一轮执行时间）"
+  },
+  "public_profile_enabled": {
+    "type": "bool",
+    "default": false,
+    "description": "启用本人明确授权的跨会话公开资料"
+  },
+  "public_profile_sessions": {
+    "type": "list",
+    "default": [],
+    "description": "允许公开资料读写的完整 UMO；还需在原生白名单内"
+  },
+  "group_reply_hourly_limit": {
+    "type": "int",
+    "default": 300,
+    "description": "每群滚动60分钟AI回复轮次预留上限，0关闭，最多300；文字/表情拆分为同一轮"
+  },
+  "participation_probe_hourly_limit": {
+    "type": "int",
+    "default": 300,
+    "description": "参与判断及语境复核每小时调用上限，最多300"
+  },
+  "group_collect_seconds": {
+    "type": "float",
+    "default": 1.2,
+    "description": "隐式群接话判断前收集短消息的秒数，0–3"
+  }
+}

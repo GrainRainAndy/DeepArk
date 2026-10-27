@@ -1,0 +1,92 @@
+##############
+### Python ###
+##############
+
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+
+#############
+### MacOS ###
+#############
+
+.DS_Store
+._*
+
+
+###############
+### Editors ###
+###############
+
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+
+###################
+### Credentials ###
+###################
+
+# Local secrets and machine-specific settings; sanitized examples stay tracked.
+.env
+.env.*
+!.env.example
+*.local.json
+*.local.toml
+*.pem
+*.key
+
+
+#######################
+### Production Data ###
+#######################
+
+# AstrBot / NapCat state, QQ sessions, memory, credentials and backups.
+/data/
+/napcat/
+/ntqq/
+/backups/
+/astrbot-backups/
+cmd_config.json
+*_config.json
+*.db
+*.db-*
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+*.faiss
+*.log
+/logs/
+*.bak
+*.bak.*
+*.tar
+*.tar.gz
+*.zip
+
+
+#######################
+### Local Reference ###
+#######################
+
+# Upstream source snapshots and reference configuration packs are not our source.
+/reference/
+/dafeiyu-config-pack/
+
+# Historical raw model outputs stay local; reviewed reports and probes are tracked.
+/benchmarks/*.jsonl
+/.artifacts/
+/.worktrees/
+/.superpowers/

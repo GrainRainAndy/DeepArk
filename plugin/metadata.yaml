@@ -1,0 +1,6 @@
+name: deepark_companion
+display_name: deepark 群聊记忆与节奏
+desc: 私聊短消息聚合、LivingMemory兼容与群聊参与节奏；仅作用于显式授权会话。
+version: v0.6.0
+author: grainrain
+astrbot_version: '>=4.29.3'
