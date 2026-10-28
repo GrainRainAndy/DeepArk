@@ -2,14 +2,14 @@
 
 ## Scope
 
-Read README.md, CONTRIBUTING.md, OPERATIONS.md and docs/TESTING.md before work. Developer checkout paths are unrestricted. Use a separate checkout/worktree for concurrent tasks; never assume another developer's directory is disposable.
+Read README.md, CONTRIBUTING.md, docs/OPERATIONS.md and docs/TESTING.md before work. Developer checkout paths are unrestricted. Use a separate checkout/worktree for concurrent tasks; never assume another developer's directory is disposable.
 
 ## Code and verification
 
-- `plugin/` is the maintained companion source. Preserve the current AstrBot integration unless the task requires changing it.
-- Run relevant tests; baseline offline command: `python3 -m unittest discover -s tests -v` from the repository root.
-- Never glob-execute root scripts: some `container_*.py` call live providers; deployment scripts mutate production.
-- Record the tested commit and actual command/results. Historical test reports are not fresh verification.
+- `plugins/deepark_companion/` is the maintained companion source. Preserve the current AstrBot integration unless the task requires changing it.
+- Run relevant tests; baseline offline command: `python3 -m unittest discover -s tests/unit -v` from the repository root.
+- Never glob-execute scripts: scripts/evaluation/ calls live providers; scripts/maintenance/ can mutate production. SDK tests live in tests/integration/.
+- Record the tested commit and actual command/results. Historical test reports are not fresh verification. New plugins belong in plugins/<plugin_name>/ with their own metadata and config schema.
 - `reference/` and `dafeiyu-config-pack/` are optional local references, not required dependencies.
 
 ## Production
@@ -23,4 +23,4 @@ Read README.md, CONTRIBUTING.md, OPERATIONS.md and docs/TESTING.md before work. 
 
 ## Documentation
 
-Update current operational facts when behavior changes. GOAL.md and historical records document previous work; their autonomous-work authorization does not authorize new work. Clearly distinguish proposed infrastructure from implemented infrastructure.
+Update current operational facts when behavior changes. docs/history/GOAL.md and historical records document previous work; their autonomous-work authorization does not authorize new work. Clearly distinguish proposed infrastructure from implemented infrastructure.
