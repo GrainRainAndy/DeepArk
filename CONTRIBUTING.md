@@ -4,11 +4,11 @@
 
 主要在各自电脑开发，需要时 SSH 到同一服务器测试与部署。开发者自由选择本地及远端路径；仅要求各任务独立 checkout/worktree，不共同编辑一个工作目录，也不直接在生产插件目录开发。
 
-仓库：`git@github.com:GrainRainAndy/DeepArk.git`。已有服务器连接别名为 `ssh aliyun-ecs`；别名由各人自行配置，不要求复制他人的 SSH 私钥或本机设置。生产路径见 `OPERATIONS.md`，与开发目录无关。
+仓库：`git@github.com:GrainRainAndy/DeepArk.git`。已有服务器连接别名为 `ssh aliyun-ecs`；别名由各人自行配置，不要求复制他人的 SSH 私钥或本机设置。生产路径见 `docs/OPERATIONS.md`，与开发目录无关。
 
-## 一个任务的流程
+## 一个任务的标准流程
 
-1. 在 issue、PR 草稿或团队约定的任务记录中说明目标、涉及模块和验收方式。涉及同一个 `plugin/main.py` 的并行任务提前协调。
+1. 在 issue、PR 草稿或团队约定的任务记录中说明目标、涉及模块和验收方式。涉及同一个 `plugins/deepark_companion/main.py` 的并行任务提前协调。
 2. 从最新 `main` 创建 `feat/<topic>`、`fix/<topic>` 或 `docs/<topic>` 短分支；不设长期 `develop` 分支。
 3. 本地实现并运行相关测试。人设、配置和文档也随代码审阅；不要夹带无关重构。
 4. 需要远端测试时先推送分支，在个人选择的远端 checkout 中 fetch 并检出准确 commit。记录 `git rev-parse HEAD`，不要以未提交的零散文件作为验收版本。
@@ -29,7 +29,7 @@
 ## 提交前
 
 ```sh
-python3 -m unittest discover -s tests -v
+python3 -m unittest discover -s tests/unit -v
 git diff --check
 git diff --cached --stat
 git diff --cached
@@ -39,4 +39,4 @@ git diff --cached
 
 ## 发布交接
 
-发布人记录目标 commit、测试证据、配置变化、备份位置和恢复步骤，按 `OPERATIONS.md` 执行。生产紧急修复也要及时形成提交与 PR，核对线上文件后更新发布记录，避免线上与仓库长期分叉。
+发布人记录目标 commit、测试证据、配置变化、备份位置和恢复步骤，按 `docs/OPERATIONS.md` 执行。生产紧急修复也要及时形成提交与 PR，核对线上文件后更新发布记录，避免线上与仓库长期分叉。

@@ -87,6 +87,7 @@ cmd_config.json
 
 # Historical raw model outputs stay local; reviewed reports and probes are tracked.
 /benchmarks/*.jsonl
+/scripts/evaluation/*.jsonl
 /.artifacts/
 /.worktrees/
 /.superpowers/
