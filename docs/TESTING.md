@@ -16,9 +16,9 @@ python3 -m unittest discover -s tests/unit -v
 python -m unittest discover -s tests/integration -t . -v
 ```
 
-四个测试模块：`test_adapter.py`、`test_batching.py`、`test_public_profile.py`、`test_participation.py`。它们引用 `plugins.deepark_companion`，使用 SDK 事件、临时存储和模拟发送/模型，不调用真实 QQ 或模型。
+SDK 回归覆盖 companion 和话题插件，包括两者共同注入上下文的路径。使用临时存储、合成事件和模拟模型、发送接口。
 
-需要与生产匹配的 AstrBot SDK 和依赖（现有记录为 AstrBot 4.29.3 / Python 3.12.15）。应在独立进程或隔离环境运行，不挂载生产 data、不启动平台连接。独立环境和依赖锁定尚未建立；本地缺少 SDK 时不能用语法检查代替测试通过。
+话题插件验收环境使用 Linux x86_64、Python 3.12.15 和 AstrBot 4.29.3。实际测试依赖版本记录在 `tests/integration/requirements-topic-sdk.txt`。在独立环境运行测试，生产数据和平台连接不参与验收。
 
 不要使用 `discover -s tests` 混跑两个层级。跨模块测试辅助类由 `tests.integration` 导入；集成测试不应被默认离线命令发现。
 
