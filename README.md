@@ -7,6 +7,7 @@
 ```text
 plugins/
   deepark_companion/       # companion 插件完整源码、schema、metadata
+  deepark_topic_context/   # 待验收的话题上下文插件，默认禁用
 resources/
   persona.txt             # 维护中的人设文本
 scripts/
@@ -44,3 +45,5 @@ python3 -m unittest discover -s tests/unit -v
 - [初始基线](docs/history/BASELINE.md)
 
 旧部署、授权和初始化脚本已清理，仍可从 Git 历史查看。通用部署器、发布锁、CI 和独立 SDK 测试镜像尚未建立，详见重构计划。
+
+话题插件开发候选版见 [话题上下文说明](docs/features/TOPIC_CONTEXT.md)，尚未部署。

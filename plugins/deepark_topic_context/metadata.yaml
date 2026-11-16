@@ -1,0 +1,6 @@
+name: deepark_topic_context
+display_name: DeepArk Topic Context
+desc: Bounded topic tracking with hysteresis, aside retention and adaptive context.
+version: v0.1.0
+author: treesjasper
+astrbot_version: '>=4.29.3'
